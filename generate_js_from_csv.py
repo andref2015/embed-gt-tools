@@ -37,6 +37,7 @@ def write_tool_embeddings_js(tools, output_js_path: str):
             f.write('\n')
         f.write('];\n')
 
-tools = read_embedded_tools_csv('embedded_tools.csv')
-write_tool_embeddings_js(tools, 'toolEmbeddings.js')
-print(f"Created toolEmbeddings.js with {len(tools)} tools from embedded_tools.csv")
+if __name__ == "__main__":
+    tools = read_embedded_tools_csv('embedded_tools.csv')
+    write_tool_embeddings_js(tools, 'toolEmbeddings.js')
+    print(f"Created toolEmbeddings.js with {len(tools)} tools from embedded_tools.csv")

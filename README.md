@@ -24,7 +24,28 @@ GEMINI_API_KEY=your_api_key_here
 ```
 python main.py
 ```
-This outputs a t
+This outputs the tool embeddings both in csv. format and as .js code. Here's an example of the .js code, you will see the last line holds the embeddings:
+```customService.js
+// Auto-generated tool embeddings
+export const toolEmbeddings = [
+  {
+    name: "40 Winks: Better Sleep Made Easy",
+    description: "Achieve your optimal sleep experience with personalized recommendations based on your specific situation.",
+    icon: "fas fa-bed",
+    url: "https://programs.clearerthinking.org/40_winks.html",
+    embedding: [-0.018600957328794663,-0.022704962296625733,0.0017865335355843953,-0.1320592178539956,-0.004145144440923949,...]
+ },
+  {
+    name: "Achieve Your Goals",
+    description: "Build a step-by-step plan for your chosen goal and set milestone reminders to track your progress.",
+    icon: "fas fa-bullseye",
+    url: "https://programs.clearerthinking.org/achieve_your_goals.html",
+    embedding: [-0.00788683872817934,0.027745177755655968,-0.00026693852563894257, [...]
+  },
+  etc.
+```
+
+
 3. Copy-paste your `toolEmbeddings.js` code in your GuidedTrack custom service.
 
 ## Using customService.js

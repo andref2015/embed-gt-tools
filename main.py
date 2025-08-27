@@ -6,6 +6,7 @@ import csv
 import sys
 import os
 from dotenv import load_dotenv
+from generate_js_from_csv import write_tool_embeddings_js
 
 # Load environment variables from .env file
 load_dotenv()
@@ -70,3 +71,7 @@ with open('embedded_tools.csv', 'w', newline='') as f:
         ])
 
 print(f"Created embedded_tools.csv with {len(embedded_tools)} tools")
+
+# Also write a JS module with the embeddings for frontend usage
+write_tool_embeddings_js(embedded_tools, 'toolEmbeddings.js')
+print(f"Created toolEmbeddings.js with {len(embedded_tools)} tools")
