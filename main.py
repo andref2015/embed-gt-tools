@@ -58,7 +58,7 @@ for tool in tools:
     print(f"Embedded: {tool['name']}")
 
 # Save embedded tools to CSV
-with open('embedded_tools.csv', 'w', newline='') as f:
+with open('toolEmbeddings.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['name', 'description', 'icon', 'url', 'embedding'])
     for tool in embedded_tools:
@@ -70,8 +70,8 @@ with open('embedded_tools.csv', 'w', newline='') as f:
             json.dumps(tool['embedding'])
         ])
 
-print(f"Created embedded_tools.csv with {len(embedded_tools)} tools")
+print(f"Created toolEmbeddings.csv with {len(embedded_tools)} tools")
 
 # Also write a JS module with the embeddings for frontend usage
-write_tool_embeddings_js(embedded_tools, 'toolEmbeddings.js')
+write_tool_embeddings_js(embedded_tools)
 print(f"Created toolEmbeddings.js with {len(embedded_tools)} tools")

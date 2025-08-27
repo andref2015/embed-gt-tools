@@ -17,8 +17,8 @@ def read_embedded_tools_csv(csv_path: str):
     return tools
 
 
-def write_tool_embeddings_js(tools, output_js_path: str):
-    with open(output_js_path, 'w') as f:
+def write_tool_embeddings_js(tools):
+    with open('toolEmbeddings.js', 'w') as f:
         f.write('// Auto-generated tool embeddings\n')
         f.write('export const toolEmbeddings = ')
         f.write('[\n')
@@ -37,7 +37,8 @@ def write_tool_embeddings_js(tools, output_js_path: str):
             f.write('\n')
         f.write('];\n')
 
+# This Python file can be run separately. If you want to make minor changes and don't want to regenerate the embeddings from scratch, you can edit for example the description or an icon in `toolEmbeddings.csv`, and it will output `toolEmbeddings.js`.
 if __name__ == "__main__":
-    tools = read_embedded_tools_csv('embedded_tools.csv')
+    tools = read_embedded_tools_csv('toolEmbeddings.csv')
     write_tool_embeddings_js(tools, 'toolEmbeddings.js')
-    print(f"Created toolEmbeddings.js with {len(tools)} tools from embedded_tools.csv")
+    print(f"Created toolEmbeddings.js with {len(tools)} tools from toolEmbeddings.csv")
