@@ -12,19 +12,19 @@ Generates pre-computed text embeddings for Cleaerer Thinking tools using gemini-
 ```
 pip3 install google-genai numpy python-dotenv
 ```
-2. Then create `.env` file with your API key:
+2. Then create an `.env` file with your API key:
 ```
 GEMINI_API_KEY=your_api_key_here
 ```
 
 ## Usage
-1. Add tools you want to embed as rows to `tools.csv` (must include `name,description,icon,url`).
+1. Add the Clearer Thinking tools you want to embed as rows to `tools.csv` (must include `name,description,icon,url`).
 
 2. Run:
 ```
 python main.py
 ```
-This outputs the tool embeddings both in csv. format and as .js code. Here's an example of the .js code, you will see the last line holds the embeddings:
+The script above outputs the tool embeddings both in csv. format and as .js code. Here's an example of the .js code, you will see the last line of each tool has the embeddings:
 ```customService.js
 // Auto-generated tool embeddings
 export const toolEmbeddings = [
@@ -46,7 +46,7 @@ export const toolEmbeddings = [
 ```
 
 
-3. Copy-paste your `toolEmbeddings.js` code in your GuidedTrack custom service.
+1. That's it! Copy-paste your `toolEmbeddings.js` output code at the end of your GuidedTrack custom service. See [`customService.js`](customService.js) for an example implementation (you will see it has the embeddings pasted at the end).
 
 ## Using customService.js
 - Use it as a template for your GuidedTrack custom service. Ensure `toolEmbeddings` is in scope (e.g., paste the generated array from toolEmbeddings.js into your custom service).
