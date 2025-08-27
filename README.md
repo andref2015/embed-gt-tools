@@ -46,7 +46,7 @@ export const toolEmbeddings = [
 ```
 
 
-1. That's it! Copy-paste your `toolEmbeddings.js` output code at the end of your GuidedTrack custom service. See [`customService.js`](customService.js) for an example implementation (you will see it has the embeddings pasted at the end).
+3. That's it! Copy-paste your `toolEmbeddings.js` output code at the end of your GuidedTrack custom service. See [`customService.js`](customService.js) for an example implementation (you will see it has the embeddings pasted at the end).
 
 ## Using customService.js
 - Use it as a template for your GuidedTrack custom service. Ensure `toolEmbeddings` is in scope (e.g., paste the generated array from toolEmbeddings.js into your custom service).
