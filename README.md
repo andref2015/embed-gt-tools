@@ -5,7 +5,7 @@ Generates pre-computed text embeddings for Cleaerer Thinking tools using gemini-
 - `tools.csv`: Input with headers `name,description,url` (this is the file you want to update with new tools)
 - `main.py`: Reads `tools.csv` CSV, calls gemini-embedding-001, normalizes vectors, writes `toolEmbeddings.js` as output
 - `toolEmbeddings.js`: Output array with embeddings for each tool
- - `customService.js`: Example GuidedTrack custom service. Expects a POST body, embeds it with Gemini, computes cosine similarity against `toolEmbeddings`, and returns `{ similarPrograms: [ { name, description, url, similarity }, ... ] }`. Requires `GEMINI_API_KEY` as environment variable.
+ - `customService.js`: Example GuidedTrack custom service. Expects a POST body, embeds it with Gemini, computes cosine similarity against `toolEmbeddings`, and returns `{ similarPrograms: [ { name, description, icon, url, similarity }, ... ] }`. Requires `GEMINI_API_KEY` as environment variable.
 
 ## Setup
 1. Install dependencies for `main.py`. In your terminal, run:
@@ -18,12 +18,13 @@ GEMINI_API_KEY=your_api_key_here
 ```
 
 ## Usage
-1. Add tools you want to embedas rows to `tools.csv` (must include `name,description,url`).
+1. Add tools you want to embed as rows to `tools.csv` (must include `name,description,icon,url`).
 
 2. Run:
 ```
-python3 main.py
+python main.py
 ```
+This outputs a t
 3. Copy-paste your `toolEmbeddings.js` code in your GuidedTrack custom service.
 
 ## Using customService.js

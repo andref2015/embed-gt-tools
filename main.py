@@ -22,6 +22,7 @@ with open('tools.csv', 'r') as f:
         tools.append({
             "name": row["name"],
             "description": row["description"],
+            "icon": row["icon"],
             "url": row["url"]
         })
 
@@ -48,35 +49,24 @@ for tool in tools:
     embedded_tools.append({
         "name": tool["name"],
         "description": tool["description"],
+        "icon": tool["icon"],
         "url": tool["url"],
         "embedding": normalized
     })
     
     print(f"Embedded: {tool['name']}")
 
-# Create JavaScript file
-with open('toolEmbeddings.js', 'w') as f:
-    f.write('// Auto-generated tool embeddings\n')
-    f.write('export const toolEmbeddings = ')
-    
-    # Write the array more compactly
-    f.write('[\n')
-    for i, tool in enumerate(embedded_tools):
-        f.write('  {\n')
-        f.write(f'    name: {json.dumps(tool["name"])},\n')
-        f.write(f'    description: {json.dumps(tool["description"])},\n')
-        f.write(f'    url: {json.dumps(tool["url"])},\n')
-        
-        # Write embedding as a compact array
-        f.write('    embedding: [')
-        # Join numbers without spaces to save size
-        f.write(','.join(str(x) for x in tool["embedding"]))
-        f.write(']\n')
-        
-        f.write('  }')
-        if i < len(embedded_tools) - 1:
-            f.write(',')
-        f.write('\n')
-    f.write('];\n')
+# Save embedded tools to CSV
+with open('embedded_tools.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['name', 'description', 'icon', 'url', 'embedding'])
+    for tool in embedded_tools:
+        writer.writerow([
+            tool['name'],
+            tool['description'],
+            tool['icon'],
+            tool['url'],
+            json.dumps(tool['embedding'])
+        ])
 
-print(f"Created toolEmbeddings.js with {len(embedded_tools)} tools")
+print(f"Created embedded_tools.csv with {len(embedded_tools)} tools")
